@@ -13,6 +13,7 @@ class HomeScreen extends Component {
     super(props)
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress)
   }
+
   componentDidMount () {
     if (ISIOS) {
       SplashScreen.hide()
@@ -21,15 +22,18 @@ class HomeScreen extends Component {
     }
     this.props.fetchClients()
   }
+
   componentWillUnmount () {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress)
   }
+
   getActiveScreen = (navigationState) => {
     if (navigationState.index !== undefined) {
       return this.getActiveScreen(navigationState.routes[navigationState.index])
     } else {
       return navigationState
     }
+    return null;
   }
   onBackPress = () => {
     const { navigate, close } = this.props
@@ -65,7 +69,11 @@ const mapStateToProps = (state) => ({
   navigate: state.navigate
 })
 const mapactionsTypeToProps = (dispatch) => ({
-  gotoDetail: (client) => dispatch({ type: actionsType.PUSH, routeName: RouteKey.Detail, params: { client } }),
+  gotoDetail: (client) => dispatch({ 
+    type: actionsType.PUSH,
+    routeName: RouteKey.Detail, 
+    params: { client } 
+  }),
   fetchClients: () => dispatch({ type: actionsType.FETCH_CLIENT, payload: { clients: [], isLoading: true } }),
   close: () => dispatch({ type: 'pop' })
 })
