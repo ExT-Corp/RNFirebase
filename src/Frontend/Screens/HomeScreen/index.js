@@ -32,7 +32,7 @@ class HomeScreen extends Component {
     }
   }
   onBackPress = () => {
-    const { navigate } = this.props
+    const { navigate, close } = this.props
 
     const activeRoute = this.getActiveScreen(navigate)
     console.log('activeRoute: ', activeRoute)
@@ -40,16 +40,16 @@ class HomeScreen extends Component {
       BackHandler.exitApp()
       return true
     } else {
-      this.props.close()
+      close()
       return true
     }
   }
   render () {
-    const { clientState, gotoDetail } = this.props
+    const { clientState, gotoDetail, navigation } = this.props
 
     return (
       <HomeView
-        navigation={this.props.navigation}
+        navigation={navigation}
         clientState={clientState}
         gotoDetail={gotoDetail}
       />
