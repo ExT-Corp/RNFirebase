@@ -15,10 +15,8 @@ export const HomeView = ({ navigation, clientState, gotoDetail }) => {
       rightAction={() => navigation.toggleDrawer()}
       rightIcon={icBar}
     >
-
       <View style={styles.body}>
         <FlatList
-          // inverted={true}
           data={clientState.clients}
           keyExtractor={(_, index) => index.toString()}
           renderItem={(object) => ClientCell({ object, gotoDetail })}
