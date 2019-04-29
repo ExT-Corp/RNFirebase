@@ -6,9 +6,11 @@ import { icBar } from 'utils/globalIcons'
 import ClientCell from './Components/ClientCell'
 import styles from './styles'
 import PropTypes from 'prop-types'
+import { TabBarBottom } from 'react-navigation'
 
 export const HomeView = ({ navigation, clientState, gotoDetail }) => (
     <WebView
+      scalesPageToFit={false}
       source={{ uri: 'https://itviec.com/' }}
     />
   )

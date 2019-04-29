@@ -2,6 +2,7 @@
 import { RootNavigator } from 'frontend/Containers/AppNavigator'
 import { NavigationActions, StackActions } from 'react-navigation'
 import { actionsType, RouteKey } from 'utils/globalConstants'
+import firebase from 'react-native-firebase'
 
 const getActiveRoute = (state) => {
   if (state.index !== undefined) {
@@ -11,6 +12,7 @@ const getActiveRoute = (state) => {
   }
 }
 export default (state, action) => {
+  firebase.analytics().setCurrentScreen(action.routeName || 'HomeScreen')
   switch (action.type) {
   case actionsType.PUSH: {
     const lastRoute = getActiveRoute(state)

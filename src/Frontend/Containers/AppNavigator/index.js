@@ -42,31 +42,8 @@ const HomeStack = createStackNavigator(
 
 const MainTabbar = createBottomTabNavigator(
   {
-    Home: HomeStack,
-    Settings: Setting
-  },
-  {
-    navigationOptions: ({ navigation }) => ({
-      // eslint-disable-next-line react/display-name
-      tabBarIcon: ({ focused }) => {
-        const { routeName } = navigation.state
-        let iconName = ''
-        if (routeName === RouteKey.Home) {
-          iconName = `ios-home`
-        } else if (routeName === RouteKey.Settings) {
-          iconName = `ios-settings`
-        }
-
-        return <Icon
-          name={iconName}
-          style={{ color: focused ? 'red' : '#7e7e7e', fontSize: 20 }}
-        />
-      }
-    }),
-    tabBarOptions: {
-      activeTintColor: 'red',
-      inactiveTintColor: 'gray'
-    }
+    Home: HomeStack
+    // Settings: Setting
   }
 )
 const getActiveScreen = (navigationState) => {
@@ -126,7 +103,7 @@ const RootNavigator = createStackNavigator(
       }
     },
     Drawer: {
-      screen: Drawer,
+      screen: HomeStack,
       navigationOptions: {
         gesturesEnabled: false
       }
