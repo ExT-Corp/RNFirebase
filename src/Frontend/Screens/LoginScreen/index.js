@@ -33,14 +33,14 @@ class LoginScreen extends Component {
     }
   }
   onBackPress = () => {
-    const { navigate } = this.props
+    const { navigate, close } = this.props
 
     const activeRoute = this.getActiveScreen(navigate)
     if (activeRoute.routeName === RouteKey.HomeScreen || activeRoute.routeName === RouteKey.Login) {
       BackHandler.exitApp()
       return true
     } else {
-      this.props.close()
+      close()
       return true
     }
   }

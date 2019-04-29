@@ -16,7 +16,7 @@ export default (action$, store, dependencies) => {
             )
           } else {
             return Observable.concat(
-              Observable.of({ type: actionsType.RESET_TO_ROUTE, routeName: RouteKey.Login })
+              Observable.of({ type: actionsType.RESET_TO_ROUTE, routeName: RouteKey.Drawer })
             )
           }
         })

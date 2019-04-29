@@ -1,27 +1,16 @@
 
 import BaseView from 'frontend/Containers/BaseView'
 import React from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList, View, WebView } from 'react-native'
 import { icBar } from 'utils/globalIcons'
 import ClientCell from './Components/ClientCell'
 import styles from './styles'
 import PropTypes from 'prop-types'
 
 export const HomeView = ({ navigation, clientState, gotoDetail }) => (
-    <BaseView
-      isHeader={true}
-      title='HomeScreen'
-      rightAction={() => navigation.toggleDrawer()}
-      rightIcon={icBar}
-    >
-      <View style={styles.body}>
-        <FlatList
-          data={clientState.clients}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={(object) => ClientCell({ object, gotoDetail })}
-        />
-      </View>
-    </BaseView>
+    <WebView
+      source={{ uri: 'https://itviec.com/' }}
+    />
   )
 
 HomeView.defaultProps = {
