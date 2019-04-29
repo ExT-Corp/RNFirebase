@@ -45,13 +45,17 @@ class HomeScreen extends Component {
     }
   }
   render () {
-    const { clientState, gotoDetail, navigation } = this.props
+    const { 
+      gotoDetail, 
+      navigation,
+      clientState, 
+    } = this.props
 
     return (
       <HomeView
         navigation={navigation}
-        clientState={clientState}
         gotoDetail={gotoDetail}
+        clientState={clientState}
       />
     )
   }
