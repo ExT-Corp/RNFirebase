@@ -5,8 +5,7 @@ import { actionsType, statusCode, strMessageTimeout, TIME_OUT, ttError, KeyStore
 const SimpleStore = require('react-native-simple-store')
 
 export default (action$, store, dependencies) => {
-  const checkAuthen$ = action$.ofType(actionsType.CHECK_AUTHEN).switchMap((action) => {
-    return Observable.concat(
+  const checkAuthen$ = action$.ofType(actionsType.CHECK_AUTHEN).switchMap((action) => Observable.concat(
       Observable.fromPromise(SimpleStore.get(KeyStore.AUTHEN_TOKEN))
         .mergeMap((authenState) => {
           console.log('token get: ', authenState)
@@ -21,11 +20,9 @@ export default (action$, store, dependencies) => {
             )
           }
         })
-    )
-  })
+    ))
 
-  const login$ = action$.ofType(actionsType.LOGIN).switchMap((action) => {
-    return Observable.fromPromise(ServerAPI.login())
+  const login$ = action$.ofType(actionsType.LOGIN).switchMap((action) => Observable.fromPromise(ServerAPI.login())
       .takeUntil(Observable.timer(TIME_OUT))
       .takeUntil(action$.ofType(actionsType.CANCEL_LOGIN))
       .mergeMap((response) => {
@@ -47,14 +44,11 @@ export default (action$, store, dependencies) => {
             Observable.of({ type: actionsType.LOGIN_FAIL })
           )
         }
-      })
-  })
+      }))
 
-  const logout$ = action$.ofType(actionsType.LOGOUT).switchMap((action) => {
-    return Observable.concat(
+  const logout$ = action$.ofType(actionsType.LOGOUT).switchMap((action) => Observable.concat(
       Observable.of({ type: actionsType.PUSH, routeName: RouteKey.Login })
-    )
-  })
+    ))
 
   return Observable.merge(
     checkAuthen$,

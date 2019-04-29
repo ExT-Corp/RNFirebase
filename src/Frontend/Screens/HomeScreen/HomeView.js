@@ -7,8 +7,7 @@ import ClientCell from './Components/ClientCell'
 import styles from './styles'
 import PropTypes from 'prop-types'
 
-export const HomeView = ({ navigation, clientState, gotoDetail }) => {
-  return (
+export const HomeView = ({ navigation, clientState, gotoDetail }) => (
     <BaseView
       isHeader={true}
       title='HomeScreen'
@@ -24,7 +23,6 @@ export const HomeView = ({ navigation, clientState, gotoDetail }) => {
       </View>
     </BaseView>
   )
-}
 
 HomeView.defaultProps = {
   navigation: {},

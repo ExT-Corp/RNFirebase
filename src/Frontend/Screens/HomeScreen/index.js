@@ -35,6 +35,7 @@ class HomeScreen extends Component {
     }
     return null;
   }
+
   onBackPress = () => {
     const { navigate, close } = this.props
 
@@ -47,6 +48,7 @@ class HomeScreen extends Component {
       close()
       return true
     }
+    return false
   }
   render () {
     const { 

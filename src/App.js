@@ -5,11 +5,9 @@ import storeRedux from 'backend/store'
 
 import { AppNavigator } from 'frontend/Containers/AppNavigator'
 
-const App = () => {
-  return (
+const App = () => (
     <Provider store={storeRedux}>
       <AppNavigator />
     </Provider>
   )
-}
 export default App
